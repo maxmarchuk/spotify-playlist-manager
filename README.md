@@ -1,7 +1,5 @@
 # spotify-api-intro
 This Repo is the result of a tutorial that teaches how to use Spotify's API with react.
-It's a siple app that allos users to see what song they currently have playing on Spotify.
-There are two parts to it, the auth-server, and the client. 
 
 ## Getting Statrted
 
