@@ -7,7 +7,7 @@ export default ({ playlists }) => {
     return null;
   }
   const renderedPlaylists = playlists.map((pl, index) => (
-    <Playlist data={pl} index={index} />
+    <Playlist key={`Playlist #${index}`} data={pl} index={index} />
   ));
 
   return <div className="playlists-container">{renderedPlaylists}</div>;

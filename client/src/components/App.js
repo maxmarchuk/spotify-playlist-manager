@@ -51,7 +51,6 @@ class App extends Component {
   }
   getUserInfo() {
     spotifyApi.getMe().then(user => {
-      console.log(user);
       this.getPlaylists(user.id);
       this.setState({
         user

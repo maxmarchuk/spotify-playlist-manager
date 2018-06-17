@@ -26,7 +26,7 @@ const UserHeader = props => {
 
   return (
     <div className="user-header">
-      <ul class="nav-menu">
+      <ul className="nav-menu">
         <NavItem>
           <i className="fas fa-home" />
         </NavItem>
