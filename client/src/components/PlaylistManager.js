@@ -1,8 +1,10 @@
 import React from 'react';
 import '../styles/PlaylistList.css';
 import Playlist from './Playlist';
+import PlaylistPage from './PlaylistPage';
+import { Route } from 'react-router-dom';
 
-export default ({ playlists }) => {
+export default ({ playlists, spotifyApi }) => {
   if (!playlists) {
     return null;
   }

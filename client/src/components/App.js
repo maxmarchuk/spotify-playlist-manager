@@ -3,7 +3,8 @@ import PlaylistManager from './PlaylistManager';
 import UserHeader from './UserHeader';
 import SpotifyWebApi from 'spotify-web-api-js';
 import '../styles/App.css';
-
+import { Switch, Route } from 'react-router-dom';
+import PlaylistPage from './PlaylistPage';
 const spotifyApi = new SpotifyWebApi();
 
 const LogIn = props => (
@@ -11,6 +12,24 @@ const LogIn = props => (
     Login
   </a>
 );
+
+const Main = props => {
+  const { playlists } = props;
+  return (
+    <main>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <PlaylistManager playlists={playlists} spotifyApi={spotifyApi} />
+          )}
+        />
+        <Route path="/playlist/:id" component={PlaylistPage} />
+      </Switch>
+    </main>
+  );
+};
 
 class App extends Component {
   constructor() {
@@ -65,12 +84,14 @@ class App extends Component {
 
   render() {
     const { playlists, user, loggedIn } = this.state;
+    window.spotifyApi = spotifyApi;
+    window.currentUser = user;
 
     return (
       <div className="App">
         {!loggedIn ? <LogIn /> : ''}
-        <UserHeader user={user} logUserOut={this.logUserOut} />
-        <PlaylistManager playlists={playlists} />
+        <UserHeader logUserOut={this.logUserOut} />
+        <Main playlists={playlists} />
       </div>
     );
   }

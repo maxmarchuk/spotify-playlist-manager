@@ -1,9 +1,10 @@
 import React from 'react';
 import '../styles/UserHeader.css';
+import { Link } from 'react-router-dom';
 
-const NavItem = ({ children }) => <li className="nav-item">{children}</li>;
 const UserInfo = props => {
-  const { user, logUserOut } = props;
+  const { logUserOut } = props;
+  const user = window.currentUser;
   return (
     <div className="user-info">
       <img className="user-thumbnail" src={user.images[0].url} alt="User" />
@@ -19,7 +20,8 @@ const UserInfo = props => {
   );
 };
 const UserHeader = props => {
-  const { user, logUserOut } = props;
+  const { logUserOut } = props;
+  const user = window.currentUser;
   if (!user) {
     return null;
   }
@@ -27,10 +29,14 @@ const UserHeader = props => {
   return (
     <div className="user-header">
       <ul className="nav-menu">
-        <NavItem>
-          <i className="fas fa-home" />
-        </NavItem>
-        <NavItem>Playlists</NavItem>
+        <li className="nav-item">
+          <Link to="/">
+            <i className="fas fa-home" />
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/">Playlists</Link>
+        </li>
       </ul>
       <UserInfo user={user} logUserOut={logUserOut} />
     </div>

@@ -40,7 +40,10 @@
   list-style: none;
   display: flex;
 }
-
+.nav-menu li a {
+  text-decoration: none;
+  color: #ccc;  
+}
 .nav-menu li:first-child {
   padding-left: 0;
   padding-right: 10px;
