@@ -3,8 +3,8 @@ import '../styles/UserHeader.css';
 import { Link } from 'react-router-dom';
 
 const UserInfo = props => {
-  const { logUserOut } = props;
-  const user = window.currentUser;
+  const { user, logUserOut } = props;
+
   return (
     <div className="user-info">
       <img className="user-thumbnail" src={user.images[0].url} alt="User" />
@@ -21,7 +21,8 @@ const UserInfo = props => {
 };
 const UserHeader = props => {
   const { logUserOut } = props;
-  const user = window.currentUser;
+  const user = JSON.parse(window.sessionStorage.getItem('user'));
+
   if (!user) {
     return null;
   }

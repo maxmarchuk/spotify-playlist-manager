@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import '../styles/PlaylistPage.css';
 
 class PlaylistPage extends Component {
   constructor(props) {
     const { id } = props.match.params;
+    const user = JSON.parse(window.sessionStorage.getItem('user'));
     super(props);
     this.state = {
-      playlist: {}
+      playlist: undefined
     };
-    this.getPlaylistTracks(window.currentUser.id, id);
+    this.getPlaylistTracks(user.id, id);
   }
 
   getPlaylistTracks(userId, playlistId) {
@@ -16,12 +18,23 @@ class PlaylistPage extends Component {
     });
   }
 
+  renderTracks(songs) {
+    return songs.map((song, index) => {
+      return (
+        <li key={`Track # ${index}`}>
+          {song.track.name} | {song.track.artists[0].name}
+        </li>
+      );
+    });
+  }
+
   render() {
-    if (!this.state.playlist) {
-      return <p>Playlist not found :(</p>;
+    const { playlist } = this.state;
+    if (!playlist) {
+      return <div />;
     }
-    console.log(this.state.playlist);
-    return <div>playlist found</div>;
+
+    return <ul>{this.renderTracks(playlist.items)}</ul>;
   }
 }
 

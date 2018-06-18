@@ -3,7 +3,7 @@ import PlaylistManager from './PlaylistManager';
 import UserHeader from './UserHeader';
 import SpotifyWebApi from 'spotify-web-api-js';
 import '../styles/App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Redirect, Switch, Route } from 'react-router-dom';
 import PlaylistPage from './PlaylistPage';
 const spotifyApi = new SpotifyWebApi();
 
@@ -15,27 +15,21 @@ const LogIn = props => (
 
 const Main = props => {
   const { playlists } = props;
-  return (
-    <main>
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <PlaylistManager playlists={playlists} spotifyApi={spotifyApi} />
-          )}
-        />
-        <Route path="/playlist/:id" component={PlaylistPage} />
-      </Switch>
-    </main>
-  );
+  return <main />;
 };
 
 class App extends Component {
   constructor() {
     super();
-    const params = this.getHashParams();
-    const token = params.access_token;
+    const sessionToken = window.sessionStorage.getItem('spotifyToken');
+    let token = sessionToken;
+    if (!token || token === 'undefined') {
+      const params = this.getHashParams();
+      const accessToken = params.access_token;
+      window.sessionStorage.setItem('spotifyToken', accessToken);
+      token = accessToken;
+    }
+
     if (token) {
       spotifyApi.setAccessToken(token);
     }
@@ -71,9 +65,7 @@ class App extends Component {
   getUserInfo() {
     spotifyApi.getMe().then(user => {
       this.getPlaylists(user.id);
-      this.setState({
-        user
-      });
+      window.sessionStorage.setItem('user', JSON.stringify(user));
     });
   }
 
@@ -84,14 +76,29 @@ class App extends Component {
 
   render() {
     const { playlists, user, loggedIn } = this.state;
+
+    if (!loggedIn) {
+      window.location.replace('http://localhost:8888');
+      return null;
+    }
     window.spotifyApi = spotifyApi;
-    window.currentUser = user;
 
     return (
       <div className="App">
-        {!loggedIn ? <LogIn /> : ''}
         <UserHeader logUserOut={this.logUserOut} />
-        <Main playlists={playlists} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => <Redirect to="/playlists" />}
+          />
+          <Route
+            exact
+            path="/playlists"
+            render={() => <PlaylistManager playlists={playlists} />}
+          />
+          <Route path="/playlists/:id" component={PlaylistPage} />
+        </Switch>
       </div>
     );
   }
