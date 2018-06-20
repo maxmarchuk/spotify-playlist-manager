@@ -4,19 +4,8 @@ import UserHeader from './UserHeader';
 import SpotifyWebApi from 'spotify-web-api-js';
 import '../styles/App.css';
 import { Redirect, Switch, Route } from 'react-router-dom';
-import PlaylistPage from './PlaylistPage';
+import TrackList from './TrackList';
 const spotifyApi = new SpotifyWebApi();
-
-const LogIn = props => (
-  <a className="login-link" href="http://localhost:8888">
-    Login
-  </a>
-);
-
-const Main = props => {
-  const { playlists } = props;
-  return <main />;
-};
 
 class App extends Component {
   constructor() {
@@ -75,7 +64,7 @@ class App extends Component {
   }
 
   render() {
-    const { playlists, user, loggedIn } = this.state;
+    const { playlists, loggedIn } = this.state;
 
     if (!loggedIn) {
       window.location.replace('http://localhost:8888');
@@ -97,7 +86,7 @@ class App extends Component {
             path="/playlists"
             render={() => <PlaylistManager playlists={playlists} />}
           />
-          <Route path="/playlists/:id" component={PlaylistPage} />
+          <Route path="/playlists/:playlistId" component={TrackList} />
         </Switch>
       </div>
     );

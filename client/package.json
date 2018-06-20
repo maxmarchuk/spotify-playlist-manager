@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.22.2",
     "react": "^16.1.0",
+    "react-data-grid": "^4.0.7",
     "react-dom": "^16.1.0",
     "react-scripts": "1.0.17",
     "spotify-web-api-js": "^0.22.1"
