@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/TrackList.css';
 import moment from 'moment';
-import { ReactDataGrid } from 'react-data-grid';
+import ReactDataGrid from 'react-data-grid';
 
 const Track = ({ track }) => {
   const t = track.track;
@@ -22,27 +22,26 @@ const Track = ({ track }) => {
 class TrackList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      playlist: undefined,
+      rows: []
+    };
     const { playlistId } = props.match.params;
     const user = JSON.parse(window.sessionStorage.getItem('user'));
-    this.state = {
-      playlist: undefined
-    };
+
     this.getPlaylistTracks(user.id, playlistId);
     this._columns = [
       {
         key: 'name',
-        name: 'Name',
-        sortable: true
+        name: 'Name'
       },
       {
         key: 'artist',
-        name: 'Artist',
-        sortable: true
+        name: 'Artist'
       },
       {
         key: 'date_added',
-        name: 'Date added',
-        sortable: true
+        name: 'Date added'
       }
     ];
   }
@@ -50,6 +49,7 @@ class TrackList extends Component {
   getPlaylistTracks(userId, playlistId) {
     window.spotifyApi.getPlaylistTracks(userId, playlistId).then(response => {
       this.setState({ playlist: response });
+      this.createRows(response.items);
     });
   }
 
@@ -59,24 +59,40 @@ class TrackList extends Component {
     });
   }
 
+  createRows(tracks) {
+    let rows = [];
+
+    for (let i = 0; i < tracks.length; i++) {
+      const dateAdded = tracks[i].added_at;
+      const relativeTimeAdded = moment(dateAdded).fromNow();
+
+      rows.push({
+        name: tracks[i].track.name,
+        artist: tracks[i].track.artists[0].name,
+        date_added: relativeTimeAdded
+      });
+    }
+
+    this.setState({ rows });
+  }
+
+  rowGetter = i => {
+    return this.state.rows ? this.state.rows[i] : {};
+  };
+
   render() {
     const { playlist } = this.state;
     if (!playlist) {
       return <div />;
     }
-
+    const rowCount = (this.state.rows && this.state.rows.length) || 0;
     return (
       <div className="track-page">
-        <table className="track-list">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Artist</th>
-              <th>Date added</th>
-            </tr>
-          </thead>
-          {this.renderTracks(playlist.items)}
-        </table>
+        <ReactDataGrid
+          columns={this._columns}
+          rowGetter={this.rowGetter}
+          rowsCount={rowCount}
+        />
       </div>
     );
   }
