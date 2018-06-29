@@ -1,8 +1,62 @@
-.track td {
+.track {
   border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px;
+  margin: 5px;
+  padding: 5px;
 }
+
+.track-field {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+.track-field:last-child {
+  border-right: none;
+}
+
+.track-field.name {
+  width: 40%;
+}
+.track-field.artist {
+  width: 40%;
+}
+.track-field.date-added {
+  width: 20%;
+}
+
 .track-page {
   width: 75%;
   height: 75%;
   margin: auto;
+}
+
+.song-count {
+  text-align: center;
+  font-weight: bolder;
+}
+
+.field-header {
+  display: flex;
+  text-align: center;
+  background: #fff;
+  margin: 5px;
+  padding: 5px;
+}
+.header-field {
+  font-weight: bold;
+  text-align: center;
+}
+.name-header {
+  width: 40%;
+}
+.artist-header {
+  width: 40%;
+}
+.date-header {
+  width: 20%;
 }

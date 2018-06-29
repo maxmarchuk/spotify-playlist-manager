@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/TrackList.css';
 import moment from 'moment';
-import ReactDataGrid from 'react-data-grid';
 
 const Track = ({ track }) => {
   const t = track.track;
@@ -11,11 +10,17 @@ const Track = ({ track }) => {
   const relativeTimeAdded = moment(dateAdded).fromNow();
 
   return (
-    <tr className="track">
-      <td className="track-name">{name}</td>
-      <td className="track-artist">{artist}</td>
-      <td className="track-date-added">{relativeTimeAdded}</td>
-    </tr>
+    <div className="track">
+      <div className="track-field name">
+        <p className="track-name">{name}</p>
+      </div>
+      <div className="track-field artist">
+        <p className="track-artist">{artist}</p>
+      </div>
+      <div className="track-field date-added">
+        <p className="track-date-added">{relativeTimeAdded}</p>
+      </div>
+    </div>
   );
 };
 
@@ -30,26 +35,11 @@ class TrackList extends Component {
     const user = JSON.parse(window.sessionStorage.getItem('user'));
 
     this.getPlaylistTracks(user.id, playlistId);
-    this._columns = [
-      {
-        key: 'name',
-        name: 'Name'
-      },
-      {
-        key: 'artist',
-        name: 'Artist'
-      },
-      {
-        key: 'date_added',
-        name: 'Date added'
-      }
-    ];
   }
 
   getPlaylistTracks(userId, playlistId) {
     window.spotifyApi.getPlaylistTracks(userId, playlistId).then(response => {
       this.setState({ playlist: response });
-      this.createRows(response.items);
     });
   }
 
@@ -59,40 +49,23 @@ class TrackList extends Component {
     });
   }
 
-  createRows(tracks) {
-    let rows = [];
-
-    for (let i = 0; i < tracks.length; i++) {
-      const dateAdded = tracks[i].added_at;
-      const relativeTimeAdded = moment(dateAdded).fromNow();
-
-      rows.push({
-        name: tracks[i].track.name,
-        artist: tracks[i].track.artists[0].name,
-        date_added: relativeTimeAdded
-      });
-    }
-
-    this.setState({ rows });
-  }
-
-  rowGetter = i => {
-    return this.state.rows ? this.state.rows[i] : {};
-  };
-
   render() {
     const { playlist } = this.state;
     if (!playlist) {
       return <div />;
     }
-    const rowCount = (this.state.rows && this.state.rows.length) || 0;
+    const numberOfTracks = playlist.items ? playlist.items.length : 0;
     return (
-      <div className="track-page">
-        <ReactDataGrid
-          columns={this._columns}
-          rowGetter={this.rowGetter}
-          rowsCount={rowCount}
-        />
+      <div>
+        <div className="track-page">
+          <div className="song-count">Songs: {numberOfTracks}</div>
+          <div className="field-header">
+            <div className="header-field name-header">Name</div>
+            <div className="header-field artist-header">Artist</div>
+            <div className="header-field date-header">Date added</div>
+          </div>
+          {this.renderTracks(playlist.items)}
+        </div>
       </div>
     );
   }
