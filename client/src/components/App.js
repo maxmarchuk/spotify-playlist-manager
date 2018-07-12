@@ -75,19 +75,21 @@ class App extends Component {
     return (
       <div className="App">
         <UserHeader logUserOut={this.logUserOut} />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => <Redirect to="/playlists" />}
-          />
-          <Route
-            exact
-            path="/playlists"
-            render={() => <PlaylistManager playlists={playlists} />}
-          />
-          <Route path="/playlists/:playlistId" component={TrackList} />
-        </Switch>
+        <div className="content">
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => <Redirect to="/playlists" />}
+            />
+            <Route
+              exact
+              path="/playlists"
+              render={() => <PlaylistManager playlists={playlists} />}
+            />
+            <Route path="/playlists/:playlistId" component={TrackList} />
+          </Switch>
+        </div>
       </div>
     );
   }

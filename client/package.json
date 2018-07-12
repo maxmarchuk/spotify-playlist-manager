@@ -6,7 +6,7 @@
     "moment": "^2.22.2",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "react-scripts": "1.0.17",
+    "react-scripts": "^1.1.4",
     "spotify-web-api-js": "^0.22.1"
   },
   "scripts": {
@@ -16,6 +16,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "lodash": "^4.17.10",
     "react-router-dom": "^4.3.1"
   }
 }

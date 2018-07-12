@@ -1,0 +1,12 @@
+* {
+  font-family: Roboto;
+}
+body {
+  margin-bottom: 50px;
+}
+
+.content {
+  width: 75%;
+  margin: auto;
+  padding-top: 70px;
+}
