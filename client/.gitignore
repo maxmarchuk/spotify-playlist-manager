@@ -10,7 +10,7 @@
 # production
 /build
 # ignore result of sass-loader
-src/**/*.css
+src/styles/**/*.css
 
 # misc
 .DS_Store
