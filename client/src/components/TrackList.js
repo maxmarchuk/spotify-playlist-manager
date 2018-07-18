@@ -12,10 +12,10 @@ const Track = ({ track, index = '?' }) => {
 
   return (
     <div className="row">
-      <div className="track-field number right-separator">{index}</div>
-      <div className="track-field name right-separator">{name}</div>
-      <div className="track-field artist right-separator">{artist}</div>
-      <div className="track-field date">{relativeTimeAdded}</div>
+      <div className="track-number">{index}</div>
+      <div className="track-name">{name}</div>
+      <div className="track-artist">{artist}</div>
+      <div className="track-date">{relativeTimeAdded}</div>
     </div>
   );
 };
@@ -74,14 +74,11 @@ class TrackList extends Component {
     return (
       <div>
         <div className="track-page">
-          {/* <button onClick={() => this.reorderOneAndTwo(playlist)}>
-            Reorder track 1 & 2
-          </button> */}
           <div className="column-header-container">
-            <div className="column-header number">#</div>
-            <div className="column-header name">Name</div>
-            <div className="column-header artist">Artist</div>
-            <div className="column-header date">Date added</div>
+            <div className="track-number">#</div>
+            <div className="track-name">Name</div>
+            <div className="track-artist">Artist</div>
+            <div className="track-date">Date added</div>
           </div>
           <div className="track-list">{this.renderTracks(playlist.items)}</div>
         </div>
@@ -89,6 +86,5 @@ class TrackList extends Component {
     );
   }
 }
-
 
 export default TrackList;
