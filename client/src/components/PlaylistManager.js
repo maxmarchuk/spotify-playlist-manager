@@ -15,10 +15,11 @@ export default ({ playlists, spotifyApi }) => {
       if (pl.tracks.total > 100) {
         numHiddenPlaylists += 1;
         hiddenPlaylistNames.push(pl.name);
-        return;
+      } else {
+        return <Playlist key={`Playlist #${index}`} data={pl} index={index} />;
       }
-      return <Playlist key={`Playlist #${index}`} data={pl} index={index} />;
     }
+    return null;
   });
   const hiddenPlaylistText = hiddenPlaylistNames.join(', ');
   const hiddenText = `${numHiddenPlaylists} ${

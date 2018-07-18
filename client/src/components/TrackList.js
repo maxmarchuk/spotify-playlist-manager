@@ -49,31 +49,12 @@ class TrackList extends Component {
     const orderedTracks = _.orderBy(tracks, 'added_at', 'desc');
     let inOrder = true;
     _.forEach(tracks, (t, index) => {
-      if (t.track.id != orderedTracks[index].track.id) {
+      if (t.track.id !== orderedTracks[index].track.id) {
         inOrder = false;
       }
     });
+
     console.log('in order: ', inOrder);
-    // const originalTrackMap = {};
-    // tracks.forEach((t, index) => {
-    //   originalTrackMap[t.track.id] = index;
-    // });
-    // const dateMap = {};
-    // tracks.forEach((t, index) => {
-    //   dateMap[index] = new Date(t.added_at);
-    // });
-
-    // const newTrackMap = {};
-    // orderedTracks.forEach((t, index) => {
-    //   newTrackMap[index] = originalTrackMap[t.track.id];
-    // });
-
-    // window.spotifyApi.reorderTracksInPlaylist(
-    //   this.state.userId,
-    //   this.state.playlistId,
-    //   parseInt(previousIndex),
-    //   parseInt(newTrackIndex)
-    // );
 
     this.getPlaylistTracks();
   };
@@ -108,5 +89,6 @@ class TrackList extends Component {
     );
   }
 }
+
 
 export default TrackList;
