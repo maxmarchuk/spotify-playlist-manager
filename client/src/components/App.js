@@ -67,7 +67,7 @@ class App extends Component {
     const { playlists, loggedIn } = this.state;
 
     if (!loggedIn) {
-      window.location.replace('http://localhost:8888');
+      window.location = `http://${window.location.hostname}:8888`;
       return null;
     }
     window.spotifyApi = spotifyApi;
