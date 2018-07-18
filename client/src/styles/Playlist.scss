@@ -9,42 +9,37 @@
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.3) 0 8px 6px -8px;
   margin: 10px;
-}
 
-.playlist-image {
-  width: 200px;
-  height: 200px;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-}
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.5) 0 10px 20px -2px;
+    transition: all 0.1s ease;
+  }
 
-.playlist:hover {
-  transform: scale(1.1);
-  box-shadow: rgba(0, 0, 0, 0.5) 0 10px 20px -2px;
-  transition: all 0.1s ease;
-}
+  .author {
+    font-size: 1em;
+    color: #2c63b0;
+  }
+  .info {
+    display: inline-block;
+    text-align: center;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-.playlist-info {
-  display: inline-block;
-  text-align: center;
-  width: 200px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  .image {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
 
-.playlist-name {
-  font-size: 1.1em;
-  font-weight: bold;
-  color: #2c63b0;
-}
-
-.playlist-author {
-  font-size: 1em;
-  color: #2c63b0;
-}
-
-.playlist > a {
-  text-decoration: none;
+  .name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #2c63b0;
+  }
 }

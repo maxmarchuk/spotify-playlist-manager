@@ -12,13 +12,13 @@ const Playlist = ({ data, index }) => {
     <Link to={location}>
       <div className="playlist" key={index}>
         <div
-          className="playlist-image"
+          className="image"
           style={{ backgroundImage: `url(${data.images[0].url})` }}
         />
-        <div className="playlist-info">
-          <p className="playlist-name">{data.name}</p>
-          <p className="playlist-author">{data.owner.display_name}</p>
-          <p className="playlist-author">{data.followers}</p>
+        <div className="info">
+          <p className="name">{data.name}</p>
+          <p className="author">{data.owner.display_name}</p>
+          <p className="author">{data.followers}</p>
         </div>
       </div>
     </Link>
