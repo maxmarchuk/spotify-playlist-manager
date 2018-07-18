@@ -53,7 +53,7 @@ class App extends Component {
   }
   getUserInfo() {
     spotifyApi.getMe().then(user => {
-      this.getPlaylists(user.id);
+      this.getPlaylists();
       window.sessionStorage.setItem('user', JSON.stringify(user));
     });
   }

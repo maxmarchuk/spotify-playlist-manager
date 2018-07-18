@@ -46,32 +46,35 @@ class TrackList extends Component {
   };
   reorderOneAndTwo = playlist => {
     const tracks = playlist.items;
-    const originalTrackMap = {};
-
-    tracks.forEach((t, index) => {
-      originalTrackMap[t.track.id] = index;
-    });
-    const dateMap = {};
-    tracks.forEach((t, index) => {
-      dateMap[index] = new Date(t.added_at);
-    });
-
     const orderedTracks = _.orderBy(tracks, 'added_at', 'desc');
-
-    const newTrackMap = {};
-    orderedTracks.forEach((t, index) => {
-      newTrackMap[originalTrackMap[t.track.id]] = index;
+    let inOrder = true;
+    _.forEach(tracks, (t, index) => {
+      if (t.track.id != orderedTracks[index].track.id) {
+        inOrder = false;
+      }
     });
+    console.log('in order: ', inOrder);
+    // const originalTrackMap = {};
+    // tracks.forEach((t, index) => {
+    //   originalTrackMap[t.track.id] = index;
+    // });
+    // const dateMap = {};
+    // tracks.forEach((t, index) => {
+    //   dateMap[index] = new Date(t.added_at);
+    // });
 
-    console.log('dates', dateMap);
-    console.log('new', newTrackMap);
+    // const newTrackMap = {};
+    // orderedTracks.forEach((t, index) => {
+    //   newTrackMap[index] = originalTrackMap[t.track.id];
+    // });
 
     // window.spotifyApi.reorderTracksInPlaylist(
     //   this.state.userId,
     //   this.state.playlistId,
-    //   0,
-    //   2
+    //   parseInt(previousIndex),
+    //   parseInt(newTrackIndex)
     // );
+
     this.getPlaylistTracks();
   };
 
@@ -90,9 +93,9 @@ class TrackList extends Component {
     return (
       <div>
         <div className="track-page">
-          <button onClick={() => this.reorderOneAndTwo(playlist)}>
+          {/* <button onClick={() => this.reorderOneAndTwo(playlist)}>
             Reorder track 1 & 2
-          </button>
+          </button> */}
           <div className="column-header-container">
             <div className="column-header number">#</div>
             <div className="column-header name">Name</div>

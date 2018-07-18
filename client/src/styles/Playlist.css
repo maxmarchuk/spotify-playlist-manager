@@ -14,8 +14,9 @@
 .playlist-image {
   width: 200px;
   height: 200px;
-  background-size: 200px 200px;
-  content: '';
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 }
 
 .playlist:hover {

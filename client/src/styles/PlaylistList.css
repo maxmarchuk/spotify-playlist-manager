@@ -6,3 +6,9 @@
   flex-wrap: wrap;
   flex-grow: 1;
 }
+
+.hidden-playlist-text {
+  display: block;
+  text-align: center;
+  color: #ccc;
+}
