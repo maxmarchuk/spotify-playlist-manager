@@ -28,7 +28,7 @@ const UserHeader = props => {
   }
 
   return (
-    <div className="user-header">
+    <header className="user-header">
       <ul className="nav-menu">
         <li className="nav-item">
           <Link to="/">
@@ -40,7 +40,7 @@ const UserHeader = props => {
         </li>
       </ul>
       <UserInfo user={user} logUserOut={logUserOut} />
-    </div>
+    </header>
   );
 };
 

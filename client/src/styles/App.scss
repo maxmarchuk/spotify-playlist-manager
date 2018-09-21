@@ -5,8 +5,13 @@ body {
   margin-bottom: 50px;
 }
 
-.content {
-  width: 75%;
-  margin: auto;
-  padding-top: 70px;
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  .content {
+    padding-top: 70px;
+    flex: 1;
+  }
 }
