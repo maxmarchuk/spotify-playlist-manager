@@ -1,5 +1,8 @@
-# spotify-api-intro
-This Repo is the result of a tutorial that teaches how to use Spotify's API with react.
+# spotify-playlist-manager
+An interface to the spotify API, built on top of spotify-node-react-starter-kit. spotify-node-react-starter-kit sets you up with an authentication server that you hook up to spotify's API, and a simple react application that is hooked up to the authentication server.
+
+
+https://github.com/jonnyk20/spotify-node-react-starter-kit
 
 ## Getting Statrted
 
