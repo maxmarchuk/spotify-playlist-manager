@@ -1,0 +1,24 @@
+.playback-footer {
+  display: flex;
+  align-content: center;
+  height: 50px;
+  width: 100%; }
+  .playback-footer .artwork {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat; }
+  .playback-footer .song-details {
+    margin-left: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    .playback-footer .song-details .name {
+      font-weight: bolder;
+      font-size: 16px;
+      line-height: 16px; }
+    .playback-footer .song-details .artist {
+      font-weight: 200;
+      font-size: 12px;
+      line-height: 12px; }
