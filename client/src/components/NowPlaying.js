@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './NowPlaying.css';
 import MusicControlButton from './MusicControlButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class NowPlaying extends Component {
   constructor(props) {
@@ -65,17 +66,14 @@ class NowPlaying extends Component {
           <i className="fa fa-angle-down" />
           {showControls && (
             <div className="music-controls">
-              <MusicControlButton
-                type="fast-backward"
-                action={window.spotifyApi.skipToPrevious}
+              <FontAwesomeIcon
+                icon="fast-backward"
+                onClick={window.spotifyApi.skipToPrevious}
               />
-              <MusicControlButton
-                type="play"
-                action={window.spotifyApi.pause}
-              />
-              <MusicControlButton
-                type="fast-forward"
-                action={window.spotifyApi.skipToNext}
+              <FontAwesomeIcon icon="play" onClick={window.spotifyApi.pause} />
+              <FontAwesomeIcon
+                icon="fast-forward"
+                onClick={window.spotifyApi.skipToNext}
               />
             </div>
           )}

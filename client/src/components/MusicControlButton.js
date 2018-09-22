@@ -9,13 +9,7 @@ class MusicControlButton extends Component {
   };
   render() {
     const { type } = this.props;
-    return (
-      <i
-        tabIndex={0}
-        className={`fa fa-${type} music-control-button`}
-        onClick={this.handleClick}
-      />
-    );
+    return <div />;
   }
 }
 export default MusicControlButton;

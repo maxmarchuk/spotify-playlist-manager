@@ -66,10 +66,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      i {
+      .svg-inline--fa {
         margin: 8px;
         font-size: 24px;
         color: white;
+
+        &:hover {
+          color: #ccc;
+        }
       }
     }
   }

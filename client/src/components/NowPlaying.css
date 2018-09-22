@@ -52,7 +52,9 @@
       display: flex;
       justify-content: center;
       align-items: center; }
-      .now-playing .song-details .music-controls i {
+      .now-playing .song-details .music-controls .svg-inline--fa {
         margin: 8px;
         font-size: 24px;
         color: white; }
+        .now-playing .song-details .music-controls .svg-inline--fa:hover {
+          color: #ccc; }
