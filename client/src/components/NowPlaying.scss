@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
 
-  button.song-details {
+  .song-details {
     display: flex;
     position: relative;
     justify-content: center;
@@ -56,7 +56,6 @@
     }
 
     .music-controls {
-      display: none;
       background: $primary-color;
       color: black;
       position: absolute;
@@ -64,17 +63,13 @@
       width: 100%;
       height: 50px;
       box-shadow: $shadow;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       i {
         margin: 8px;
         font-size: 24px;
         color: white;
-      }
-    }
-    &:focus {
-      .music-controls {
-        display: flex;
-        justify-content: center;
-        align-items: center;
       }
     }
   }

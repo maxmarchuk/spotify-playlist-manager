@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center; }
-  .now-playing button.song-details {
+  .now-playing .song-details {
     display: flex;
     position: relative;
     justify-content: center;
@@ -15,16 +15,16 @@
     border: none;
     color: white;
     cursor: pointer; }
-    .now-playing button.song-details .artwork {
+    .now-playing .song-details .artwork {
       width: 32px;
       height: 32px;
       background-size: cover;
       background-position: 50% 50%;
       background-repeat: no-repeat; }
-    .now-playing button.song-details i.fa-angle-down {
+    .now-playing .song-details i.fa-angle-down {
       margin-left: 12px;
       opacity: 0.5; }
-    .now-playing button.song-details .song-text-details {
+    .now-playing .song-details .song-text-details {
       overflow-x: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -32,29 +32,27 @@
       display: flex;
       flex-direction: column;
       justify-content: center; }
-      .now-playing button.song-details .song-text-details .name {
+      .now-playing .song-details .song-text-details .name {
         font-weight: bolder;
         font-size: 16px;
         line-height: 16px; }
-      .now-playing button.song-details .song-text-details .artist {
+      .now-playing .song-details .song-text-details .artist {
         opacity: 0.5;
         font-weight: 200;
         font-size: 12px;
         line-height: 12px; }
-    .now-playing button.song-details .music-controls {
-      display: none;
+    .now-playing .song-details .music-controls {
       background: #2c63b0;
       color: black;
       position: absolute;
       top: 100%;
       width: 100%;
       height: 50px;
-      box-shadow: rgba(0, 0, 0, 0.5) 0 2px 2px; }
-      .now-playing button.song-details .music-controls i {
-        margin: 8px;
-        font-size: 24px;
-        color: white; }
-    .now-playing button.song-details:focus .music-controls {
+      box-shadow: rgba(0, 0, 0, 0.5) 0 2px 2px;
       display: flex;
       justify-content: center;
       align-items: center; }
+      .now-playing .song-details .music-controls i {
+        margin: 8px;
+        font-size: 24px;
+        color: white; }

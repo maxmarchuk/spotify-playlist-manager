@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './NowPlaying.css';
+import MusicControlButton from './MusicControlButton';
 
 class NowPlaying extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      track: {}
+      track: {},
+      showControls: false
     };
 
     this.refreshNowPlayingInfo();
@@ -35,18 +37,23 @@ class NowPlaying extends Component {
     }
   }
 
-  showControls() {}
+  toggleControls = () => {
+    const { showControls } = this.state;
+    this.setState({ showControls: !showControls });
+  };
 
   render() {
-    const { track = {} } = this.state;
+    const { track = {}, showControls } = this.state;
 
     const artworkUrl = track.url || '';
     const currentSongArtist = track.artist || '';
     const currentSongName = track.name || '';
-
+    //<i className="fa fa-fast-backward" />
+    //<i className="fa fa-play" />
+    //<i className="fa fa-fast-forward" />
     return (
       <div className="now-playing">
-        <button onClick={this.showControls} className="song-details">
+        <div onClick={this.toggleControls} className="song-details">
           <div
             style={{ backgroundImage: `url(${artworkUrl})` }}
             className="artwork"
@@ -56,12 +63,23 @@ class NowPlaying extends Component {
             <div className="artist">{currentSongArtist}</div>
           </div>
           <i className="fa fa-angle-down" />
-          <div className="music-controls">
-            <i className="fa fa-fast-backward" />
-            <i className="fa fa-play" />
-            <i className="fa fa-fast-forward" />
-          </div>
-        </button>
+          {showControls && (
+            <div className="music-controls">
+              <MusicControlButton
+                type="fast-backward"
+                action={window.spotifyApi.skipToPrevious}
+              />
+              <MusicControlButton
+                type="play"
+                action={window.spotifyApi.pause}
+              />
+              <MusicControlButton
+                type="fast-forward"
+                action={window.spotifyApi.skipToNext}
+              />
+            </div>
+          )}
+        </div>
       </div>
     );
   }
