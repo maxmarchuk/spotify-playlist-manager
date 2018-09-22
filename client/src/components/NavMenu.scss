@@ -3,6 +3,7 @@
   list-style: none;
   display: flex;
   user-select: none;
+
   li {
     padding-left: 10px;
     padding-right: 10px;
@@ -10,6 +11,7 @@
 
     a {
       text-decoration: none;
+      font-size: 14px;
       color: #fff;
     }
 

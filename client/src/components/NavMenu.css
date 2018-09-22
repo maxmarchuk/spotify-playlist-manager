@@ -9,6 +9,7 @@
     border-right: 1px solid rgba(255, 255, 255, 0.3); }
     .nav-menu li a {
       text-decoration: none;
+      font-size: 14px;
       color: #fff; }
     .nav-menu li:first-child {
       padding-left: 0;

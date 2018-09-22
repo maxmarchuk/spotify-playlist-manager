@@ -5,12 +5,12 @@ import './NavMenu.css';
 const NavMenu = () => {
   return (
     <ul className="nav-menu">
-      <li className="nav-item">
+      <li>
         <Link to="/">
           <i className="fas fa-home" />
         </Link>
       </li>
-      <li className="nav-item">
+      <li>
         <Link to="/">Playlists</Link>
       </li>
     </ul>

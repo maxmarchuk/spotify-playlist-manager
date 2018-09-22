@@ -11,6 +11,9 @@
     width: 32px;
     margin-right: 8px;
     border-radius: 16px; }
+  .user-info .user-name {
+    color: white;
+    font-size: 14px; }
   .user-info .user-name,
   .user-info .user-log-out {
     flex: none; }
