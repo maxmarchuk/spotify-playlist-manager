@@ -13,7 +13,7 @@ const UserHeader = props => {
   }
 
   return (
-    <header className="user-header">
+    <header className="nav-bar">
       <NavMenu />
       <NowPlaying />
       <UserInfo user={user} logUserOut={logUserOut} />

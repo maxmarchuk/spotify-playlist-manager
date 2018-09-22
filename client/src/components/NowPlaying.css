@@ -7,6 +7,7 @@
   justify-content: center; }
   .now-playing button.song-details {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     padding: 8px;
@@ -40,7 +41,14 @@
         font-weight: 200;
         font-size: 12px;
         line-height: 12px; }
-  .now-playing .music-controls {
-    background: #2c63b0;
-    position: relative;
-    top: 10px; }
+    .now-playing button.song-details .music-controls {
+      display: none;
+      background: #2c63b0;
+      color: black;
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      height: 100px;
+      box-shadow: rgba(0, 0, 0, 0.5) 0 2px 2px; }
+    .now-playing button.song-details:focus .music-controls {
+      display: block; }

@@ -7,11 +7,18 @@ body {
 
 .App {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 
+  .nav-bar {
+    flex-shrink: 0;
+  }
   .content {
-    padding-top: 70px;
-    flex: 1;
+    flex-grow: 1;
+    overflow: auto;
   }
 }

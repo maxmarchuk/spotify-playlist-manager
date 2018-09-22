@@ -1,14 +1,8 @@
-.user-header {
+@import './variables.scss';
+
+.nav-bar {
   display: flex;
   align-items: center;
-  position: fixed;
-  top: 0;
-  background-color: #2c63b0;
-  color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 2px0;
-  height: 50px;
-  width: 100%;
-  font-size: 14px;
-  overflow: hidden;
-  z-index: 1;
+  background-color: $primary-color;
+  box-shadow: $shadow;
 }

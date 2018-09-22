@@ -56,8 +56,8 @@ class NowPlaying extends Component {
             <div className="artist">{currentSongArtist}</div>
           </div>
           <i className="fa fa-angle-down" />
+          <div className="music-controls">THIS IS A SECTION</div>
         </button>
-        <div className="music-controls">THIS IS A SECTION</div>
       </div>
     );
   }
