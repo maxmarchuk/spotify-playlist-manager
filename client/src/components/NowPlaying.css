@@ -1,0 +1,46 @@
+.now-playing {
+  flex: auto;
+  height: 50px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .now-playing button.song-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer; }
+    .now-playing button.song-details .artwork {
+      width: 32px;
+      height: 32px;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat; }
+    .now-playing button.song-details i.fa-angle-down {
+      margin-left: 12px;
+      opacity: 0.5; }
+    .now-playing button.song-details .song-text-details {
+      overflow-x: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin-left: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+      .now-playing button.song-details .song-text-details .name {
+        font-weight: bolder;
+        font-size: 16px;
+        line-height: 16px; }
+      .now-playing button.song-details .song-text-details .artist {
+        opacity: 0.5;
+        font-weight: 200;
+        font-size: 12px;
+        line-height: 12px; }
+  .now-playing .music-controls {
+    background: #2c63b0;
+    position: relative;
+    top: 10px; }

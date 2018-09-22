@@ -22,9 +22,7 @@ export default ({ playlists, spotifyApi }) => {
     return null;
   });
   const hiddenPlaylistText = hiddenPlaylistNames.join(', ');
-  const hiddenText = `${numHiddenPlaylists} ${
-    numHiddenPlaylists === 1 ? 'playlist has' : 'playlists have'
-  } been hidden for having more than 100 tracks: ${hiddenPlaylistText}`;
+  const hiddenText = `Playlists with 100+ tracks are not supported at this time.Unsupported playlists: ${hiddenPlaylistText}`;
   return (
     <div>
       <div className="playlists-container">{renderedPlaylists}</div>

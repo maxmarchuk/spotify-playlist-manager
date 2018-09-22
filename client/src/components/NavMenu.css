@@ -1,0 +1,19 @@
+.nav-menu {
+  flex: 1;
+  list-style: none;
+  display: flex;
+  user-select: none; }
+  .nav-menu li {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3); }
+    .nav-menu li a {
+      text-decoration: none;
+      color: #fff; }
+    .nav-menu li:first-child {
+      padding-left: 0;
+      padding-right: 10px; }
+    .nav-menu li:last-child {
+      padding-left: 10px;
+      padding-right: 0;
+      border-right: none; }

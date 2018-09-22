@@ -5,7 +5,6 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import '../styles/App.css';
 import { Redirect, Switch, Route } from 'react-router-dom';
 import TrackList from './TrackList';
-import PlaybackFooter from './PlaybackFooter';
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -92,7 +91,6 @@ class App extends Component {
             <Route path="/playlists/:playlistId" component={TrackList} />
           </Switch>
         </main>
-        <PlaybackFooter />
       </div>
     );
   }

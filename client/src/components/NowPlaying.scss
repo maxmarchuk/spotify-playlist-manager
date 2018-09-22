@@ -1,0 +1,62 @@
+@import '../styles/variables.scss';
+
+.now-playing {
+  flex: auto;
+  height: 50px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button.song-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    background: none;
+    border: none;
+    // border: $border;
+    color: white;
+    cursor: pointer;
+
+    .artwork {
+      width: 32px;
+      height: 32px;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+
+    i.fa-angle-down {
+      margin-left: 12px;
+      opacity: 0.5;
+    }
+
+    .song-text-details {
+      overflow-x: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin-left: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .name {
+        font-weight: bolder;
+        font-size: 16px;
+        line-height: 16px;
+      }
+      .artist {
+        opacity: 0.5;
+        font-weight: 200;
+        font-size: 12px;
+        line-height: 12px;
+      }
+    }
+  }
+  .music-controls {
+    background: $primary-color;
+    position: relative;
+    top: 10px;
+  }
+}
