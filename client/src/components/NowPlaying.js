@@ -29,6 +29,7 @@ class NowPlaying extends Component {
     } else {
       this.setState({
         track: {
+          isPlaying: r.is_playing,
           id: r.item.id,
           url: r.item.album.images[2].url,
           artist: r.item.artists[0].name,
@@ -45,35 +46,41 @@ class NowPlaying extends Component {
 
   render() {
     const { track = {}, showControls } = this.state;
+    const { url, artist, name, isPlaying } = track;
+    const centerIcon = isPlaying ? 'pause' : 'play';
+    const centerAction = isPlaying
+      ? window.spotifyApi.pause
+      : window.spotifyApi.play;
 
-    const artworkUrl = track.url || '';
-    const currentSongArtist = track.artist || '';
-    const currentSongName = track.name || '';
-    //<i className="fa fa-fast-backward" />
-    //<i className="fa fa-play" />
-    //<i className="fa fa-fast-forward" />
     return (
       <div className="now-playing">
         <div onClick={this.toggleControls} className="song-details">
-          <div
-            style={{ backgroundImage: `url(${artworkUrl})` }}
-            className="artwork"
-          />
+          <div style={{ backgroundImage: `url(${url})` }} className="artwork" />
           <div className="song-text-details">
-            <div className="name">{currentSongName}</div>
-            <div className="artist">{currentSongArtist}</div>
+            <div className="name">{name}</div>
+            <div className="artist">{artist}</div>
           </div>
-          <i className="fa fa-angle-down" />
+          {showControls ? (
+            <FontAwesomeIcon icon="angle-up" />
+          ) : (
+            <FontAwesomeIcon icon="angle-down" />
+          )}
           {showControls && (
             <div className="music-controls">
-              <FontAwesomeIcon
+              <MusicControlButton
                 icon="fast-backward"
-                onClick={window.spotifyApi.skipToPrevious}
+                action={window.spotifyApi.skipToPrevious}
+                refresh={this.refreshNowPlayingInfo}
               />
-              <FontAwesomeIcon icon="play" onClick={window.spotifyApi.pause} />
-              <FontAwesomeIcon
+              <MusicControlButton
+                icon={centerIcon}
+                action={centerAction}
+                refresh={this.refreshNowPlayingInfo}
+              />
+              <MusicControlButton
                 icon="fast-forward"
-                onClick={window.spotifyApi.skipToNext}
+                action={window.spotifyApi.skipToNext}
+                refresh={this.refreshNowPlayingInfo}
               />
             </div>
           )}

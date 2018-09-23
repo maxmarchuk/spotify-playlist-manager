@@ -7,15 +7,25 @@ import registerServiceWorker from './registerServiceWorker';
 
 // Font awesome stuff
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFastForward,
   faFastBackward,
   faPlay,
-  faPauseCircle
+  faPause,
+  faAngleDown,
+  faAngleUp,
+  faHome
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faFastForward, faFastBackward, faPlay, faPauseCircle);
+library.add(
+  faFastForward,
+  faFastBackward,
+  faPlay,
+  faPause,
+  faAngleDown,
+  faAngleUp,
+  faHome
+);
 
 ReactDOM.render(
   <BrowserRouter>
