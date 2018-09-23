@@ -30,16 +30,16 @@ class TrackList extends Component {
     this.state = {
       playlist: undefined,
       rows: [],
-      userId: user.id, 
+      userId: user.id,
       playlistId
     };
 
-    this.getPlaylistTracks(user.id, playlistId);
+    this.getPlaylistTracks(playlistId);
   }
 
   getPlaylistTracks = () => {
     window.spotifyApi
-      .getPlaylistTracks(this.state.userId, this.state.playlistId)
+      .getPlaylistTracks(this.state.playlistId)
       .then(response => {
         this.setState({ playlist: response });
       });

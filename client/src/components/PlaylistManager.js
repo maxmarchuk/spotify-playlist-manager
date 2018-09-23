@@ -1,8 +1,8 @@
 import React from 'react';
-import '../styles/PlaylistList.css';
+import '../styles/PlaylistManager.css';
 import Playlist from './Playlist';
 
-export default ({ playlists, spotifyApi }) => {
+export default ({ playlists }) => {
   if (!playlists) {
     return null;
   }
